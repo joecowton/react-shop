@@ -6,7 +6,7 @@ class FilterDiv extends React.Component {
   render () {
     return (
       <div id="filter" className="panel">
-        filter
+        <img src='menu.png' alt="filter"/>
       </div>
     );
   }
@@ -26,7 +26,7 @@ class BasketDiv extends React.Component {
   render () {
     return (
       <div id="basket" className="panel">
-        basket
+        <img src='basket.png' alt="basket"/>
       </div>
     );
   }
@@ -72,7 +72,7 @@ class HomePage extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div id="container">
       {this.renderHeaderBlock()}
       {this.renderProductList()}
       </div>
@@ -82,4 +82,4 @@ class HomePage extends React.Component {
 
 
 
-ReactDOM.render(<HomePage />, document.getElementById('container'))
+ReactDOM.render(<HomePage />, document.getElementById('body'))

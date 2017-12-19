@@ -1,7 +1,10 @@
 body {
   font-family: 'Dosis', sans-serif;
 }
-
+#container {
+  background-color: #e5e5e5;
+  height: 40em;
+}
 .headerDiv {
   display: flex;
   flex-direction: row;
@@ -29,11 +32,18 @@ body {
   text-align: right;
 }
 
+.panel img {
+  width: auto;
+  margin: 0.5em;
+}
+
+
 #product-list {
   height: 25em;
   margin-left: 3em;
   margin-right: 3em;
   text-align: center;
+  background-color: #ffffff;
 }
 
 #product-list .product {
