@@ -28,6 +28,11 @@ body {
   text-align: center;
 }
 
+#logo a {
+  text-decoration: none;
+  color: black;
+}
+
 #basket {
   text-align: right;
 }
@@ -37,8 +42,7 @@ body {
   margin: 0.5em;
 }
 
-
-#product-list {
+#display {
   height: 25em;
   margin-left: 3em;
   margin-right: 3em;
