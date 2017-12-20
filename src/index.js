@@ -3,6 +3,18 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 import './index.css';
+const products = [
+  {
+    id: 1,
+    image: 'https://cdn.shopify.com/s/files/1/0197/8160/products/santa-reindeer-christmas-crackers-meri_800x.jpg',
+    name: 'crackers',
+  },
+  {
+    id: 2,
+    image: 'https://cdn.shopify.com/s/files/1/0197/8160/products/gold-honeycomb-ball-decorations-christmas_800x.jpg?v=1478798343',
+    name: 'decorations',
+  },
+]
 
 class FilterDiv extends React.Component {
   render () {
@@ -66,13 +78,25 @@ class HeaderBlock extends React.Component {
     );
   }
 }
+const ProductListRow = (props) => {
+  return <li classname="media" style={ { cursor: 'pointer' } }>
+    <div className="media-left">
+      <a href="#">
+        <img className="media-object"  src={props.product.image} />
+      </a>
+    </div>
+    <div className="media-body">
+      <h4 className="media-heading">{props.product.name}</h4>
+    </div>
+  </li>;
+    }
 
 class ProductList extends React.Component {
   render () {
     return (
-        <div id="product-list">
-          This is the Product List
-        </div>
+        <ul className="media-list">
+          {products.map((p) => (<ProductListRow key={p.id} product={p} />))}
+        </ul>
     );
   }
 }
