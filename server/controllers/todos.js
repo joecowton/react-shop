@@ -6,6 +6,8 @@ module.exports = {
     return Todo
       .create({
         title: req.body.title,
+        price: req.body.price,
+        image: req.body.image,
       })
       .then(todo => res.status(201).send(todo))
       .catch(error => res.status(400).send(error));
@@ -59,6 +61,8 @@ module.exports = {
       return todo
         .update({
           title: req.body.title || todo.title,
+          price: req.body.price|| todo.price,
+          image: req.body.image|| todo.image,
         })
         .then(() => res.status(200).send(todo))  // Send back the updated todo.
         .catch((error) => res.status(400).send(error));

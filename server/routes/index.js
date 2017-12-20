@@ -3,7 +3,7 @@ const todoItemsController = require('../controllers').todoItems;
 
 module.exports = (app) => {
   app.get('/api', (req, res) => res.status(200).send({
-    message: 'Welcome to the Todos API!',
+    message: 'Welcome to the Holly Shop API!',
   }));
 
   app.post('/api/todos', todosController.create);
