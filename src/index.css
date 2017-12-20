@@ -50,10 +50,19 @@ body {
   background-color: #ffffff;
 }
 
-#product-list .product {
-  margin: 1em;
+/* #product-list {
   display: inline-block;
+} */
+
+#product-list .product {
+  display: inline-block;
+  margin: 1em;
   height: 10em;
   width: 10em;
   border: 0.001em solid;
+}
+
+.product img {
+  width: 6em;
+  margin-top: 0.75em;
 }

@@ -3,18 +3,33 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 import './index.css';
-const products = [
-  {
-    id: 1,
-    image: 'https://cdn.shopify.com/s/files/1/0197/8160/products/santa-reindeer-christmas-crackers-meri_800x.jpg',
-    name: 'crackers',
-  },
-  {
-    id: 2,
-    image: 'https://cdn.shopify.com/s/files/1/0197/8160/products/gold-honeycomb-ball-decorations-christmas_800x.jpg?v=1478798343',
-    name: 'decorations',
-  },
+// import { PRODUCTS } from './data';
+
+const PRODUCTS = [
+  { id: 1, name: 'Christmas Tree', price: 35, image: 'tree.jpg' },
+  { id: 2, name: 'Tinsel', price: 3.5, image: 'tinsel.jpeg' },
+  { id: 3, name: 'Christmas Pudding', price: 4, image: 'pudding.jpeg' },
+  { id: 4, name: 'Lights', price: 7.5, image: 'multi-coloured-lights.jpeg' },
+  { id: 5, name: 'Mince Pies', price: 2.4, image: 'mince-pies.jpeg' },
+  { id: 6, name: 'White Lights', price: 6, image: 'lights.jpeg' },
+  { id: 7, name: 'Light-up Deer', price: 9, image: 'light-up-deer.jpeg' },
+  { id: 8, name: 'Bauble Set', price: 12, image: 'bauble-set.jpg' }
 ]
+
+console.log(PRODUCTS)
+
+// const products = [
+//   {
+//     id: 1,
+//     image: 'https://cdn.shopify.com/s/files/1/0197/8160/products/santa-reindeer-christmas-crackers-meri_800x.jpg',
+//     name: 'crackers',
+//   },
+//   {
+//     id: 2,
+//     image: 'https://cdn.shopify.com/s/files/1/0197/8160/products/gold-honeycomb-ball-decorations-christmas_800x.jpg?v=1478798343',
+//     name: 'decorations',
+//   },
+// ]
 
 class FilterDiv extends React.Component {
   render () {
@@ -78,25 +93,30 @@ class HeaderBlock extends React.Component {
     );
   }
 }
-const ProductListRow = (props) => {
-  return <li classname="media" style={ { cursor: 'pointer' } }>
-    <div className="media-left">
-      <a href="#">
-        <img className="media-object"  src={props.product.image} />
-      </a>
-    </div>
-    <div className="media-body">
-      <h4 className="media-heading">{props.product.name}</h4>
-    </div>
-  </li>;
-    }
+
+class Product extends React.Component {
+  render () {
+    return (
+      <div className="product">
+        <div>
+          <img src={this.props.image} alt={this.props.name} />
+        </div>
+        <div>
+          <p>{this.props.name}</p>
+          <p>£{parseFloat(this.props.price).toFixed(2)}</p>
+        </div>
+      </div>
+    );
+  }
+}
 
 class ProductList extends React.Component {
   render () {
+    let products = PRODUCTS;
     return (
-        <ul className="media-list">
-          {products.map((p) => (<ProductListRow key={p.id} product={p} />))}
-        </ul>
+        <div id="product-list">
+          { products.map((p) => (<Product key={p.id} name={p.name} price={p.price} image={p.image} />)) }
+        </div>
     );
   }
 }
@@ -136,7 +156,5 @@ class HomePage extends React.Component {
     );
   }
 }
-
-
 
 ReactDOM.render(<HomePage />, document.getElementById('body'))
