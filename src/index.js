@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 import { MyBasket } from './my-basket';
 import './index.css';
-// import { PRODUCTS } from './data';
 
 const PRODUCTS = [
   { id: 1, name: 'Christmas Tree', price: 35, image: 'tree.jpg' },
@@ -19,18 +18,6 @@ const PRODUCTS = [
 
 console.log(PRODUCTS)
 
-// const products = [
-//   {
-//     id: 1,
-//     image: 'https://cdn.shopify.com/s/files/1/0197/8160/products/santa-reindeer-christmas-crackers-meri_800x.jpg',
-//     name: 'crackers',
-//   },
-//   {
-//     id: 2,
-//     image: 'https://cdn.shopify.com/s/files/1/0197/8160/products/gold-honeycomb-ball-decorations-christmas_800x.jpg?v=1478798343',
-//     name: 'decorations',
-//   },
-// ]
 
 class FilterDiv extends React.Component {
   render () {
@@ -45,11 +32,9 @@ class FilterDiv extends React.Component {
 class LogoDiv extends React.Component {
   render () {
     return (
-      <Router>
-        <div id="logo">
-          <Link to="/"><h1>Holly</h1></Link>
-        </div>
-      </Router>
+      <div id="logo">
+        <Link to="/"><h1>Holly</h1></Link>
+      </div>
     );
   }
 }
@@ -57,39 +42,8 @@ class LogoDiv extends React.Component {
 class BasketDiv extends React.Component {
   render () {
     return (
-      <Router>
-        <div id="basket" className="panel">
-          <Switch>
-          <Link to="/my-basket">
-            <img src='basket.png' alt="basket"/>
-          </Link>
-        </Switch>
-        </div>
-      </Router>
-    );
-  }
-}
-
-
-class HeaderBlock extends React.Component {
-  renderLogoDiv(){
-    return <LogoDiv/>;
-  }
-
-  renderFilterDiv(){
-    return <FilterDiv />;
-  }
-
-  renderBasketDiv() {
-    return <BasketDiv />;
-  }
-
-  render() {
-    return (
-      <div className="headerDiv">
-        {this.renderFilterDiv()}
-        {this.renderLogoDiv()}
-        {this.renderBasketDiv()}
+      <div id="basket" className="panel">
+          <Link to="/my-basket"><img src='basket.png' alt="basket"/></Link>
       </div>
     );
   }
@@ -123,27 +77,36 @@ class ProductList extends React.Component {
 }
 
 class HomePage extends React.Component {
-  renderHeaderBlock () {
-    return <HeaderBlock />;
+  renderLogoDiv(){
+    return <LogoDiv/>;
   }
-  //
-  // renderProductList () {
-  //   return <ProductList />;
-  // }
+
+  renderFilterDiv(){
+    return <FilterDiv />;
+  }
+
+  renderBasketDiv() {
+    return <BasketDiv />;
+  }
 
   render () {
     return (
+      <Router>
         <div id="container">
-          {this.renderHeaderBlock()}
-        <Router>
+          <div className="headerDiv">
+            {this.renderFilterDiv()}
+            {this.renderLogoDiv()}
+            {this.renderBasketDiv()}
+          </div>
+
           <div id="display">
             <Switch>
               <Route exact path="/" component={ProductList} />
               <Route path="/my-basket" component={MyBasket} />
             </Switch>
           </div>
-        </Router>
-    </div>
+        </div>
+      </Router>
     );
   }
 }
