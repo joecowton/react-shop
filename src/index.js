@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
+import { MyBasket } from './my-basket';
 import './index.css';
 // import { PRODUCTS } from './data';
 
@@ -117,16 +118,6 @@ class ProductList extends React.Component {
         <div id="product-list">
           { products.map((p) => (<Product key={p.id} name={p.name} price={p.price} image={p.image} />)) }
         </div>
-    );
-  }
-}
-
-class MyBasket extends React.Component {
-  render () {
-    return (
-      <div id="my-basket">
-        This is my basket!
-      </div>
     );
   }
 }
