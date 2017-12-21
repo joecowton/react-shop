@@ -52,15 +52,17 @@ class BasketDiv extends React.Component {
 class Product extends React.Component {
   render () {
     return (
-      <div className="product">
-        <div>
-          <img src={this.props.image} alt={this.props.name} />
+      <Link to="/my-basket">
+        <div className="product">
+          <div>
+            <img src={this.props.image} alt={this.props.name} />
+          </div>
+          <div>
+            <p>{this.props.name}</p>
+            <p>£{parseFloat(this.props.price).toFixed(2)}</p>
+          </div>
         </div>
-        <div>
-          <p>{this.props.name}</p>
-          <p>£{parseFloat(this.props.price).toFixed(2)}</p>
-        </div>
-      </div>
+      </Link>
     );
   }
 }
