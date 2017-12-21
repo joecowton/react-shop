@@ -71,6 +71,12 @@ class CheckoutButton extends Component {
 }
 
 export class MyBasket extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { items: [] }
+  }
+
+
   renderBasketHeader () {
     return <BasketHeader />
   }
