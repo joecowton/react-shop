@@ -16,9 +16,6 @@ const PRODUCTS = [
   { id: 8, name: 'Bauble Set', price: 12, image: 'bauble-set.jpg' }
 ]
 
-console.log(PRODUCTS)
-
-
 class FilterDiv extends Component {
   render () {
     return (
@@ -76,8 +73,6 @@ class Product extends Component {
 
 class ProductList extends Component {
   handleAddItem (product) {
-    console.log('Inside Product List')
-    console.log(product)
     this.props.addToBasket(product);
   }
 
@@ -102,13 +97,33 @@ class ProductList extends Component {
 }
 
 class HomePage extends Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      products: {}
+    }
+  }
+
   addToBasket(product) {
-    console.log('Inside HomePage')
-    console.log(product)
     this.props.addToBasket(product)
   }
 
-  renderLogoDiv() {
+  componentDidMount() {
+    fetch("http://localhost:8000/api/types/1")
+      .then(function(response) {
+        console.log(response.data);
+        return response.json();
+      })
+      .then(function(data){
+        console.log(data)
+      })
+      .catch(function() {
+        console.log("Something went wrong!");
+      });
+  }
+
+  renderLogoDiv(){
     return <LogoDiv/>;
   }
 
@@ -155,15 +170,13 @@ class MyShop extends Component {
   }
 
   addToBasket(product) {
-    console.log('Inside MyShop')
-    console.log(product)
     let updatedItems = this.state.itemsInBasket.slice();
     updatedItems.push(product);
     this.setState({ itemsInBasket: updatedItems })
   }
 
   render() {
-    return <HomePage addToBasket={(product) => this.addToBasket(product) } />
+    return <HomePage addToBasket={ (product) => this.addToBasket(product) } />
   }
 }
 
