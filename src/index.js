@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import { MyBasketPage } from './my-basket';
 import './index.css';
 
+
+
 const PRODUCTS = [
   { id: 1, name: 'Christmas Tree', price: 35, image: 'tree.jpg' },
   { id: 2, name: 'Tinsel', price: 3.5, image: 'tinsel.jpeg' },
