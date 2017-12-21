@@ -1,4 +1,4 @@
-const todosController = require('../controllers').todos;
+const categoriesController = require('../controllers').categories;
 const todoItemsController = require('../controllers').todoItems;
 
 module.exports = (app) => {
@@ -6,19 +6,19 @@ module.exports = (app) => {
     message: 'Welcome to the Holly Shop API!',
   }));
 
-  app.post('/api/todos', todosController.create);
-  app.get('/api/todos', todosController.list);
-  app.get('/api/todos/:todoId', todosController.retrieve);
-  app.put('/api/todos/:todoId', todosController.update);
-  app.delete('/api/todos/:todoId', todosController.destroy);
-  app.post('/api/todos/:todoId/items', todoItemsController.create);
-  app.put('/api/todos/:todoId/items/:todoItemId', todoItemsController.update);
+  app.post('/api/categories', categoriesController.create);
+  app.get('/api/categories', categoriesController.list);
+  app.get('/api/categories/:categoryId', categoriesController.retrieve);
+  app.put('/api/categories/:categoryId', categoriesController.update);
+  app.delete('/api/categories/:categoryId', categoriesController.destroy);
+  app.post('/api/categories/:categoryId/items', todoItemsController.create);
+  app.put('/api/categories/:categoryId/items/:todoItemId', todoItemsController.update);
   app.delete(
-    '/api/todos/:todoId/items/:todoItemId', todoItemsController.destroy
+    '/api/categories/:categoryId/items/:todoItemId', todoItemsController.destroy
   );
 
   // For any other request method on todo items, we're going to return "Method Not Allowed"
-  app.all('/api/todos/:todoId/items', (req, res) =>
+  app.all('/api/categories/:categoryId/items', (req, res) =>
     res.status(405).send({
       message: 'Method Not Allowed',
   }));

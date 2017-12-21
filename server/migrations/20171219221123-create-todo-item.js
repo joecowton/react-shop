@@ -23,13 +23,13 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
-      todoId: {
+      catgeoryId: {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
         references: {
-          model: 'Todos',
+          model: 'Categories',
           key: 'id',
-          as: 'todoId',
+          as: 'categoryId',
         },
       },
     }),

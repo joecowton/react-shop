@@ -1,6 +1,6 @@
 module.exports = {
   up: (queryInterface, Sequelize) =>
-    queryInterface.createTable('Todos', {
+    queryInterface.createTable('Catgeories', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -8,14 +8,6 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       title: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      price: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-      },
-      image: {
         type: Sequelize.STRING,
         allowNull: false,
       },
@@ -28,5 +20,5 @@ module.exports = {
         type: Sequelize.DATE,
       },
     }),
-  down: (queryInterface /* , Sequelize */) => queryInterface.dropTable('Todos'),
+  down: (queryInterface /* , Sequelize */) => queryInterface.dropTable('Catgeories'),
 };
