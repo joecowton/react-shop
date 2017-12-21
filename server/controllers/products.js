@@ -1,55 +1,57 @@
-const TodoItem = require('../models').TodoItem;
+const Product = require('../models').Product;
 
 module.exports = {
   create(req, res) {
-    return TodoItem
+    return Product
       .create({
-        content: req.body.content,
-        todoId: req.params.todoId,
+        title: req.body.title,
+        price: req.body.price,
+        image: req.body.image,
+        typeId: req.params.typeId,
       })
-      .then(todoItem => res.status(201).send(todoItem))
+      .then(product => res.status(201).send(product))
       .catch(error => res.status(400).send(error));
   },
 
   update(req, res) {
-    return TodoItem
+    return Product
       .find({
           where: {
-            id: req.params.todoItemId,
-            todoId: req.params.todoId,
+            id: req.params.productId,
+            typeId: req.params.typeId,
           },
         })
-      .then(todoItem => {
-        if (!todoItem) {
+      .then(product => {
+        if (!product) {
           return res.status(404).send({
             message: 'TodoItem Not Found',
           });
         }
 
-        return todoItem
+        return product
           .update(req.body, { fields: Object.keys(req.body) })
-          .then(updatedTodoItem => res.status(200).send(updatedTodoItem))
+          .then(updatedProduct => res.status(200).send(updatedProduct))
           .catch(error => res.status(400).send(error));
       })
       .catch(error => res.status(400).send(error));
   },
 
   destroy(req, res) {
-    return TodoItem
+    return Product
       .find({
           where: {
-            id: req.params.todoItemId,
-            todoId: req.params.todoId,
+            id: req.params.productId,
+            todoId: req.params.typeId,
           },
         })
-      .then(todoItem => {
-        if (!todoItem) {
+      .then(product => {
+        if (!product) {
           return res.status(404).send({
-            message: 'TodoItem Not Found',
+            message: 'Product Not Found',
           });
         }
 
-        return todoItem
+        return product
           .destroy()
           .then(() => res.status(204).send())
           .catch(error => res.status(400).send(error));

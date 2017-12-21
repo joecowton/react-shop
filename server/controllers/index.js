@@ -1,7 +1,7 @@
-const todos = require('./todos');
-const todoItems = require('./todoitems');
+const types = require('./types');
+const products = require('./products');
 
 module.exports = {
-  todos,
-  todoItems,
+  types,
+  products,
 };
