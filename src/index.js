@@ -167,4 +167,4 @@ class MyShop extends Component {
   }
 }
 
-ReactDOM.render(<MyShop />, document.getElementById('body'))
+ReactDOM.render(<MyShop />, document.getElementById('root'))
