@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
-import { MyBasket } from './my-basket';
+import { MyBasketPage } from './my-basket';
 import './index.css';
 
 const PRODUCTS = [
@@ -19,7 +19,7 @@ const PRODUCTS = [
 console.log(PRODUCTS)
 
 
-class FilterDiv extends React.Component {
+class FilterDiv extends Component {
   render () {
     return (
       <div id="filter" className="panel">
@@ -29,7 +29,7 @@ class FilterDiv extends React.Component {
   }
 }
 
-class LogoDiv extends React.Component {
+class LogoDiv extends Component {
   render () {
     return (
       <div id="logo">
@@ -39,7 +39,7 @@ class LogoDiv extends React.Component {
   }
 }
 
-class BasketDiv extends React.Component {
+class BasketDiv extends Component {
   render () {
     return (
       <div id="basket" className="panel">
@@ -49,41 +49,70 @@ class BasketDiv extends React.Component {
   }
 }
 
-class Product extends React.Component {
+class Product extends Component {
   render () {
     return (
-      <Link to="/my-basket">
         <div className="product">
           <div>
-            <img src={this.props.image} alt={this.props.name} />
+            <img className="thumb" src={this.props.image} alt={this.props.name} />
           </div>
           <div>
-            <p>{this.props.name}</p>
-            <p>£{parseFloat(this.props.price).toFixed(2)}</p>
+            <div>{this.props.name}</div>
+            <div>
+              <div className="split">
+                £{parseFloat(this.props.price).toFixed(2)}
+              </div>
+              <div className="split">
+                <button className="add-to-basket" onClick={() => this.props.handleAddItem(this)}>
+                  <img src="add-to-cart-x1.png" alt="cart-icon" />
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-      </Link>
     );
   }
 }
 
-class ProductList extends React.Component {
+class ProductList extends Component {
+  handleAddItem (product) {
+    console.log('Inside Product List')
+    console.log(product)
+    this.props.addToBasket(product);
+  }
+
   render () {
     let products = PRODUCTS;
     return (
         <div id="product-list">
-          { products.map((p) => (<Product key={p.id} name={p.name} price={p.price} image={p.image} />)) }
+          {
+            products.map((p) => (
+              <Product
+                key={p.id}
+                name={p.name}
+                price={p.price}
+                image={p.image}
+                handleAddItem={(product) => this.handleAddItem(product)}
+              />
+            ))
+          }
         </div>
     );
   }
 }
 
-class HomePage extends React.Component {
-  renderLogoDiv(){
+class HomePage extends Component {
+  addToBasket(product) {
+    console.log('Inside HomePage')
+    console.log(product)
+    this.props.addToBasket(product)
+  }
+
+  renderLogoDiv() {
     return <LogoDiv/>;
   }
 
-  renderFilterDiv(){
+  renderFilterDiv() {
     return <FilterDiv />;
   }
 
@@ -92,6 +121,12 @@ class HomePage extends React.Component {
   }
 
   render () {
+    const productList = (props) => {
+      return (
+        <ProductList addToBasket={(product) => this.addToBasket(product)} />
+      )
+    }
+
     return (
       <Router>
         <div id="container">
@@ -103,8 +138,8 @@ class HomePage extends React.Component {
 
           <div id="display">
             <Switch>
-              <Route exact path="/" component={ProductList} />
-              <Route path="/my-basket" component={MyBasket} />
+              <Route exact path="/" component={productList} />
+              <Route path="/my-basket" component={MyBasketPage} />
             </Switch>
           </div>
         </div>
@@ -113,4 +148,23 @@ class HomePage extends React.Component {
   }
 }
 
-ReactDOM.render(<HomePage />, document.getElementById('body'))
+class MyShop extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { itemsInBasket: [] }
+  }
+
+  addToBasket(product) {
+    console.log('Inside MyShop')
+    console.log(product)
+    let updatedItems = this.state.itemsInBasket.slice();
+    updatedItems.push(product);
+    this.setState({ itemsInBasket: updatedItems })
+  }
+
+  render() {
+    return <HomePage addToBasket={(product) => this.addToBasket(product) } />
+  }
+}
+
+ReactDOM.render(<MyShop />, document.getElementById('body'))

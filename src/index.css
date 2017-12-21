@@ -6,6 +6,10 @@ body {
   height: 100%;
 }
 
+.split {
+  width: 50%;
+}
+
 .headerDiv {
   display: flex;
   flex-direction: row;
@@ -64,9 +68,20 @@ body {
   border: 0.001em solid;
 }
 
-.product img {
+.product .thumb {
   width: 6em;
   margin-top: 0.75em;
+}
+
+.add-to-basket {
+  height: 3em;
+  width: 3em;
+  border-radius: 50%;
+  background-color: #3ce739;
+}
+
+.add-to-basket img {
+  width: 1.5em;
 }
 
 #my-basket h1 {
