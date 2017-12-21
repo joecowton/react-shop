@@ -1,5 +1,6 @@
+'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Todo = sequelize.define('Todo', {
+  const Product = sequelize.define('Product', {
     title: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -14,12 +15,12 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
-  Todo.associate = (models) => {
-    Todo.hasMany(models.TodoItem, {
-      foreignKey: 'todoId',
-      as: 'todoItems',
+  Product.associate = (models) => {
+    Product.belongsTo(models.Type, {
+      foreignKey: 'typeId',
+      onDelete: 'CASCADE',
     });
   };
 
-  return Todo;
+  return Product;
 };
