@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import './index.css';
 // import { PRODUCTS } from './data';
 
+
+
 const PRODUCTS = [
   { id: 1, name: 'Christmas Tree', price: 35, image: 'tree.jpg' },
   { id: 2, name: 'Tinsel', price: 3.5, image: 'tinsel.jpeg' },
@@ -15,6 +17,7 @@ const PRODUCTS = [
   { id: 7, name: 'Light-up Deer', price: 9, image: 'light-up-deer.jpeg' },
   { id: 8, name: 'Bauble Set', price: 12, image: 'bauble-set.jpg' }
 ]
+
 
 console.log(PRODUCTS)
 
@@ -30,6 +33,7 @@ console.log(PRODUCTS)
 //     name: 'decorations',
 //   },
 // ]
+
 
 class FilterDiv extends React.Component {
   render () {
