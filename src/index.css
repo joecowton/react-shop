@@ -3,7 +3,7 @@ body {
 }
 #container {
   background-color: #e5e5e5;
-  height: 40em;
+  height: 100%;
 }
 .headerDiv {
   display: flex;
@@ -43,9 +43,10 @@ body {
 }
 
 #display {
-  height: 25em;
+  height: auto;
   margin-left: 3em;
   margin-right: 3em;
+  margin-bottom: 5em;
   text-align: center;
   background-color: #ffffff;
 }
@@ -57,7 +58,7 @@ body {
 #product-list .product {
   display: inline-block;
   margin: 1em;
-  height: 10em;
+  height: 12em;
   width: 10em;
   border: 0.001em solid;
 }
