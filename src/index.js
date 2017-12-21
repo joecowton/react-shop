@@ -134,9 +134,15 @@ class HomePage extends React.Component {
         </Router>
     </div>
     );
+    <div class="box">
+        <img id="1" src="http://mclaugk3.immtcnj.com/images/food6.png"/>
+        <span class="caption fade-caption">
+        <h3>Fade Caption</h3>
+        <p>Test</p>
+        </span>
+    </div>
   }
 }
-
 
 
 ReactDOM.render(<HomePage />, document.getElementById('body'))
