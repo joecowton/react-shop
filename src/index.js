@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-
 import { MyBasket } from './my-basket';
 import './index.css';
 
@@ -16,7 +15,6 @@ const PRODUCTS = [
   { id: 8, name: 'Bauble Set', price: 12, image: 'bauble-set.jpg' }
 ]
 
-console.log(PRODUCTS)
 
 
 class FilterDiv extends React.Component {
@@ -79,6 +77,28 @@ class ProductList extends React.Component {
 }
 
 class HomePage extends React.Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      products: {}
+    }
+  }
+
+  componentDidMount() {
+    fetch("http://localhost:8000/api/types/1")
+      .then(function(response) {
+        console.log(response.data);
+        return response.json();
+      })
+      .then(function(data){
+        console.log(data)
+      })
+      .catch(function() {
+        console.log("Something went wrong!");
+      });
+  }
+
   renderLogoDiv(){
     return <LogoDiv/>;
   }
