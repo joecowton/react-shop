@@ -15,6 +15,12 @@ html{
   background-size: cover;
 }
 
+#root {
+  margin: 2em;
+  margin-top: 0;
+  margin-bottom: 4em;
+}
+
 #container {
   height: 100%;
 }
@@ -52,6 +58,13 @@ html{
   font-size: 1em;
 }
 
+#basket.panel img {
+  margin-right: 12%;
+}
+
+#filter.panel img {
+  margin-left: 12%;
+}
 
 #container .panel {
   height: 100%;
@@ -78,6 +91,7 @@ html{
 .panel img {
   width: auto;
   margin: 0.5em;
+  margin-top: 10%;
 }
 
 #display {
