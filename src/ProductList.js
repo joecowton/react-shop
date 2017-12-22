@@ -10,7 +10,10 @@ const PRODUCTS = [
   { id: 5, name: 'Mince Pies', price: 2.4, image: 'mince-pies.jpeg' },
   { id: 6, name: 'White Lights', price: 6, image: 'lights.jpeg' },
   { id: 7, name: 'Light-up Deer', price: 9, image: 'light-up-deer.jpeg' },
-  { id: 8, name: 'Bauble Set', price: 12, image: 'bauble-set.jpg' }
+  { id: 8, name: 'Bauble Set', price: 12, image: 'bauble-set.jpg' },
+  { id: 9, name: 'Tree Top', price: 15, image: 'top.png' },
+  { id: 10, name: 'Happy New Year', price: 10, image: 'newyear.png' },
+  { id: 11, name: 'Candleholder', price: 20, image: 'candleholder.png' }
 ]
 
 export class ProductList extends Component {
