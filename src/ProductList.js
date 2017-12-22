@@ -14,9 +14,28 @@ const PRODUCTS = [
   { id: 8, name: 'Bauble Set', price: 12, image: 'bauble-set.jpg' }
 ]
 
+
+
+
 export class ProductList extends Component {
   handleAddItem (product) {
     this.props.addToBasket(product);
+  }
+
+  componentDidMount() {
+    fetch("http://localhost:8000/api/types/1")
+      .then(function(response) {
+        console.log(response.data);
+        return response.json();
+      })
+      .then(function(data){
+        console.log(data.products.title)
+        console.log(data.products.map((p) => key={p.id})
+        const PRODUCTS = data.products
+      })
+      .catch(function() {
+        console.log("Something went wrong!");
+      });
   }
 
   render () {
