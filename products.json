@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "image": "https://cdn.shopify.com/s/files/1/0197/8160/products/santa-reindeer-christmas-crackers-meri_800x.jpg",
+    "name": "crackers",
+    "desc": "amazing crackers",
+    "price": 15
+  },
+  {
+    "id": 2,
+    "image": "https://cdn.shopify.com/s/files/1/0197/8160/products/gold-honeycomb-ball-decorations-christmas_800x.jpg?v=1478798343",
+    "name": "decorations",
+    "desc": "best decorations",
+    "price": 25
+  },
+]
