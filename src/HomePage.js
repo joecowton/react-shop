@@ -19,7 +19,7 @@ class LogoDiv extends Component {
   render () {
     return (
       <div id="logo">
-        <Link to="/"><h1>Holly</h1></Link>
+        <Link to="/"><a>Holly</a></Link>
       </div>
     );
   }
