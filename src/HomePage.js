@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
-import { MyBasketPage } from './my-basket';
+import { MyBasketPage } from './MyBasket';
 import { ProductList } from './ProductList';
+import { Checkout } from './Checkout';
+
 
 class FilterDiv extends Component {
   render () {
@@ -102,6 +104,7 @@ export class HomePage extends Component {
             <Switch>
               <Route exact path="/" component={productList} />
               <Route path="/my-basket" component={myBasketPage} />
+              <Route path="/checkout" component={Checkout} />
             </Switch>
           </div>
         </div>

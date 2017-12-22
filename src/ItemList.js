@@ -1,18 +1,7 @@
 import React, { Component } from 'react';
-
 import { ItemRow } from './ItemRow';
 
-class BasketHeader extends Component {
-  render () {
-    return (
-      <div>
-        <h1> Your Basket: </h1>
-      </div>
-    )
-  }
-}
-
-class ItemListDiv extends Component {
+export class ItemListDiv extends Component {
   constructor(props) {
     super(props);
     this.state = { itemsInBasket: this.props.itemsFromBasket() }
@@ -50,42 +39,5 @@ class ItemListDiv extends Component {
         {this.listItems()}
       </div>
     )
-  }
-}
-
-class CheckoutButton extends Component {
-  render () {
-    return (
-      <div>
-        <input type="submit" className="checkout" value="CHECKOUT  >>" />
-      </div>
-    )
-  }
-}
-
-export class MyBasketPage extends Component {
-  renderBasketHeader () {
-    return <BasketHeader />
-  }
-
-  renderItemListDiv () {
-    return <ItemListDiv
-      itemsFromBasket={() => this.props.itemsFromBasket() }
-      removeItem={ (item) => this.props.removeItem(item) }
-    />
-  }
-
-  renderCheckoutButton () {
-    return <CheckoutButton />
-  }
-
-  render () {
-    return (
-      <div id="my-basket">
-        {this.renderBasketHeader()}
-        {this.renderItemListDiv()}
-        {this.renderCheckoutButton()}
-      </div>
-    );
   }
 }
