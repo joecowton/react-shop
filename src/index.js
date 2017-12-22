@@ -26,7 +26,15 @@ class MyShop extends Component {
       updatedItems.push(productToAdd);
       this.setState({ itemsInBasket: updatedItems })
     }
+  }
 
+  removeFromBasket (product) {
+    let copyOfItems = this.state.itemsInBasket.slice()
+    let item = copyOfItems.filter((item) => {
+      return item.productName === product
+    }).pop()
+    copyOfItems.splice(copyOfItems.indexOf(item), 1)
+    this.setState({ itemsInBasket: copyOfItems })
   }
 
   getItemsFromBasket() {
@@ -36,7 +44,8 @@ class MyShop extends Component {
   render() {
     return <HomePage
       addToBasket={ (product) => this.addToBasket(product) }
-      itemsFromBasket={() => this.getItemsFromBasket() }
+      itemsFromBasket={ () => this.getItemsFromBasket() }
+      removeItem={ (item) => this.removeFromBasket(item) }
     />
   }
 }

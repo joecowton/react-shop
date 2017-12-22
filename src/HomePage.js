@@ -80,9 +80,12 @@ export class HomePage extends Component {
       )
     }
 
-    let myBasket = (props) => {
+    let myBasketPage = (props) => {
       return (
-        <MyBasketPage itemsFromBasket={() => this.props.itemsFromBasket() } />
+        <MyBasketPage
+          itemsFromBasket={() => this.props.itemsFromBasket() }
+          removeItem={ (item) => this.props.removeItem(item) }
+        />
       )
     }
 
@@ -98,7 +101,7 @@ export class HomePage extends Component {
           <div id="display">
             <Switch>
               <Route exact path="/" component={productList} />
-              <Route path="/my-basket" component={myBasket} />
+              <Route path="/my-basket" component={myBasketPage} />
             </Switch>
           </div>
         </div>

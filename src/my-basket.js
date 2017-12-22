@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Item } from './Item';
+import { ItemRow } from './ItemRow';
 
 class BasketHeader extends Component {
   render () {
@@ -13,17 +13,32 @@ class BasketHeader extends Component {
 }
 
 class ItemListDiv extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { itemsInBasket: this.props.itemsFromBasket() }
+  }
+
+  removeItem (itemName) {
+    let copyOfItems = this.state.itemsInBasket.slice()
+    let item = copyOfItems.filter((item) => {
+      return item.productName === itemName
+    }).pop()
+    copyOfItems.splice(copyOfItems.indexOf(item), 1)
+    this.setState({ itemsInBasket: copyOfItems })
+    this.props.removeItem(itemName)
+  }
+
   listItems () {
-    let itemsFromBasket = this.props.itemsFromBasket()
-    let listItems;
-    if (itemsFromBasket.length <= 0) {
+    if (this.state.itemsInBasket.length <= 0) {
       return <h1> Your basket is empty </h1>
     } else {
-      return itemsFromBasket.map((p) => (
-        <Item
+      return this.state.itemsInBasket.map((p) => (
+        <ItemRow
+          key={this.state.itemsInBasket.indexOf(p)}
           productName={p.productName}
           price={p.price}
           image={p.image}
+          removeItem={ (item) => this.removeItem(item) }
         />
       ))
     }
@@ -54,7 +69,10 @@ export class MyBasketPage extends Component {
   }
 
   renderItemListDiv () {
-    return <ItemListDiv itemsFromBasket={() => this.props.itemsFromBasket() } />
+    return <ItemListDiv
+      itemsFromBasket={() => this.props.itemsFromBasket() }
+      removeItem={ (item) => this.props.removeItem(item) }
+    />
   }
 
   renderCheckoutButton () {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export class Item extends Component {
+export class ItemRow extends Component {
   constructor(props) {
     super(props);
     this.state = { quantity: 1 };
@@ -47,7 +47,7 @@ renderProductQuantityDiv () {
           <input type="number" value={this.state.value} min="1" onChange={this.handleChange} />
         </div>
         <div className="split">
-          <img src="remove.png" alt="remove-icon" />
+          <img src="remove.png" alt="remove-icon" onClick={ () => this.props.removeItem(this.props.productName) } />
         </div>
       </div>
     </div>
