@@ -129,7 +129,7 @@ html{
 
 #my-basket .item-list {
   border: 1px solid black;
-  min-height: 10em;
+  min-height: 6em;
   height: auto;
   width: 80%;
   margin-left: 10%;

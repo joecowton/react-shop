@@ -14,8 +14,19 @@ class MyShop extends Component {
 
   addToBasket(product) {
     let updatedItems = this.state.itemsInBasket.slice();
-    updatedItems.push(product);
-    this.setState({ itemsInBasket: updatedItems })
+    let productToAdd = {
+      productName: product.name,
+      price: product.price,
+      image: product.image
+    }
+
+    if (updatedItems.filter((item) => {
+      return item.productName === productToAdd.productName
+    }).length <= 0) {
+      updatedItems.push(productToAdd);
+      this.setState({ itemsInBasket: updatedItems })
+    }
+
   }
 
   getItemsFromBasket() {

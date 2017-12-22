@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { Item } from './Item';
+
 class BasketHeader extends Component {
   render () {
     return (
@@ -11,62 +13,26 @@ class BasketHeader extends Component {
 }
 
 class ItemListDiv extends Component {
-  render () {
+  listItems () {
     let itemsFromBasket = this.props.itemsFromBasket()
+    let listItems;
+    if (itemsFromBasket.length <= 0) {
+      return <h1> Your basket is empty </h1>
+    } else {
+      return itemsFromBasket.map((p) => (
+        <Item
+          productName={p.productName}
+          price={p.price}
+          image={p.image}
+        />
+      ))
+    }
+  }
+
+  render () {
     return (
       <div className="item-list">
-        {
-          itemsFromBasket.map((p) => (
-            <Item
-              productName={p.name}
-              price={p.price}
-              image={p.image}
-            />
-          ))
-        }
-      </div>
-    )
-  }
-}
-
-class Item extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { quantity: 1 };
-
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({quantity: event.target.value});
-  }
-
-  render () {
-    return (
-      <div className="item-div">
-        <div className="item-panel">
-          <img class="thumb" src={this.props.image} alt={this.props.productName} />
-        </div>
-        <div className="item-description">
-          {this.props.productName}
-        </div>
-        <div className="price">
-          £{(this.props.price * this.state.quantity)}
-        </div>
-        <div className="item-panel">
-
-          <div className="quantity-label">
-            <label>Quantity</label>
-          </div>
-          <div className="quantity-icons">
-            <div className="split">
-              <input type="number" value={this.state.value} min="1" onChange={this.handleChange} />
-            </div>
-            <div className="split">
-              <img src="remove.png" alt="remove-icon" />
-            </div>
-          </div>
-        </div>
+        {this.listItems()}
       </div>
     )
   }
