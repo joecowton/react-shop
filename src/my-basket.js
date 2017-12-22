@@ -12,9 +12,18 @@ class BasketHeader extends Component {
 
 class ItemListDiv extends Component {
   render () {
+    let itemsFromBasket = this.props.itemsFromBasket()
     return (
       <div className="item-list">
-        <Item />
+        {
+          itemsFromBasket.map((p) => (
+            <Item
+              productName={p.name}
+              price={p.price}
+              image={p.image}
+            />
+          ))
+        }
       </div>
     )
   }
@@ -36,10 +45,13 @@ class Item extends Component {
     return (
       <div className="item-div">
         <div className="item-panel">
-          Item Image
+          <img class="thumb" src={this.props.image} alt={this.props.productName} />
         </div>
         <div className="item-description">
-          Description here
+          {this.props.productName}
+        </div>
+        <div className="price">
+          £{(this.props.price * this.state.quantity)}
         </div>
         <div className="item-panel">
 
@@ -76,7 +88,7 @@ export class MyBasketPage extends Component {
   }
 
   renderItemListDiv () {
-    return <ItemListDiv />
+    return <ItemListDiv itemsFromBasket={() => this.props.itemsFromBasket() } />
   }
 
   renderCheckoutButton () {

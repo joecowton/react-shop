@@ -30,15 +30,14 @@ body {
 }
 
 html{
-background: url(https://www.ihdimages.com/wp-content/uploadsktz/ktz/animated_snowflake_wallpaper_cool_hd-2xwfcdrjbdtea84cr6p0cq.jpeg) no-repeat center center fixed;
--webkit-background-size: cover;
--moz-background-size: cover;
--o-background-size: cover;
-background-size: cover;
+  background: url(https://www.ihdimages.com/wp-content/uploadsktz/ktz/animated_snowflake_wallpaper_cool_hd-2xwfcdrjbdtea84cr6p0cq.jpeg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 #container {
-  /*background-color: #e5e5e5;*/
   height: 100%;
 }
 
@@ -144,6 +143,10 @@ background-size: cover;
   flex-direction: row;
 }
 
+#my-basket .item-div .thumb {
+  width: 5em;
+}
+
 #my-basket .item-panel {
   width: 25%;
 }
@@ -170,7 +173,11 @@ background-size: cover;
 }
 
 #my-basket .item-description {
-  width: 50%;
+  width: 35%;
+}
+
+#my-basket .price {
+  width: 15%;
 }
 
 #my-basket .checkout {

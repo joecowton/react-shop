@@ -18,8 +18,15 @@ class MyShop extends Component {
     this.setState({ itemsInBasket: updatedItems })
   }
 
+  getItemsFromBasket() {
+    return this.state.itemsInBasket
+  }
+
   render() {
-    return <HomePage addToBasket={ (product) => this.addToBasket(product) } />
+    return <HomePage
+      addToBasket={ (product) => this.addToBasket(product) }
+      itemsFromBasket={() => this.getItemsFromBasket() }
+    />
   }
 }
 

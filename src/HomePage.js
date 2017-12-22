@@ -19,7 +19,7 @@ class LogoDiv extends Component {
   render () {
     return (
       <div id="logo">
-        <Link to="/"><h1>Holly</h1></Link>
+        <h1><Link to="/">Holly</Link></h1>
       </div>
     );
   }
@@ -81,6 +81,12 @@ export class HomePage extends Component {
       )
     }
 
+    let myBasket = (props) => {
+      return (
+        <MyBasketPage itemsFromBasket={() => this.props.itemsFromBasket() } />
+      )
+    }
+
     return (
       <Router>
         <div id="container">
@@ -93,7 +99,7 @@ export class HomePage extends Component {
           <div id="display">
             <Switch>
               <Route exact path="/" component={productList} />
-              <Route path="/my-basket" component={MyBasketPage} />
+              <Route path="/my-basket" component={myBasket} />
             </Switch>
           </div>
         </div>
