@@ -13,6 +13,19 @@ module.exports = {
       .catch(error => res.status(400).send(error));
   },
 
+  show(req, res) {
+    return Product
+    .find({
+        where: {
+          id: req.params.productId,
+          typeId: req.params.typeId,
+        },
+      })
+    .then(product => {
+      return res.send(product)
+    })
+  },
+
   update(req, res) {
     return Product
       .find({

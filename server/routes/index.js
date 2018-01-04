@@ -21,6 +21,7 @@ module.exports = (app) => {
   app.delete('/api/types/:typeId', typesController.destroy);
   app.post('/api/types/:typeId/products', productsController.create);
   app.put('/api/types/:typeId/products/:productId', productsController.update);
+  app.get('/api/types/:typeId/products/:productId', productsController.show);
   app.delete(
     '/api/types/:typeId/products/:productId', productsController.destroy
   );
